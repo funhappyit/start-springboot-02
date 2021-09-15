@@ -1,6 +1,7 @@
 package org.zerock;
 
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -61,7 +62,7 @@ class Boot03ApplicationTests {
 		Collection<Board> results = repo.findByBnoGreaterThanOrderByBnoDesc(0L,paging);
 		results.forEach(board->System.err.println(board));
 	}
-	*/
+
 	@Test
 	public void testBnoPagingSort() {
 		Pageable paging = PageRequest.of(0, 10, Sort.Direction.ASC, "bno");
@@ -76,6 +77,18 @@ class Boot03ApplicationTests {
 		list.forEach(board->System.out.println(board));
 	}
 
+	@Test
+	public void testByTitle2() {
+		repo.findByTitle3("17")
+		.forEach(arr->System.out.println(Arrays.toString(arr)));
+	}
+	*/
+	
+	@Test
+	public void testByPaging() {
+		Pageable pageable = PageRequest.of(0, 10);
+		repo.findBypage(pageable).forEach(board->System.out.println(board));
+	}
 	
 	
 	
